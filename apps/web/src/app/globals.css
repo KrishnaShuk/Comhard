@@ -1,0 +1,184 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg: #fafafa;
+    --surface: #ffffff;
+    --border: #e4e4e7;
+    --input: #8f8f98;
+    --text: #18181b;
+    --text-rgb: 24 24 27;
+    --muted: #52525b;
+    --muted-rgb: 82 82 91;
+    --border-rgb: 228 228 231;
+    --accent: #4f46e5;
+    --accent-rgb: 79 70 229;
+    --accent-hover: #4338ca;
+    --accent-tint: #eef2ff;
+    --accent-tint-rgb: 238 242 255;
+    --accent-tint-text: #4338ca;
+    --sla-on-track: #3f3f46;
+    --sla-late: #b91c1c;
+    --status-progress: #1d4ed8;
+    --status-done: #15803d;
+    --shadow-float: 0 8px 24px rgb(24 24 27 / 0.12);
+    --pill-todo-bg: #f4f4f5;
+    --pill-todo-text: #52525b;
+    --pill-progress-bg: #dbeafe;
+    --pill-progress-text: #1d4ed8;
+    --pill-done-bg: #dcfce7;
+    --pill-done-text: #15803d;
+    --pill-risk-bg: #fef3c7;
+    --pill-risk-text: #92400e;
+    --pill-breached-bg: #b91c1c;
+    --pill-breached-text: #ffffff;
+    --pill-met-bg: #ccfbf1;
+    --pill-met-text: #0f766e;
+  }
+
+  .dark {
+    --bg: #0b0b0f;
+    --surface: #141418;
+    --border: #2a2a31;
+    --input: #6b6b75;
+    --text: #f4f4f5;
+    --text-rgb: 244 244 245;
+    --muted: #a1a1aa;
+    --muted-rgb: 161 161 170;
+    --border-rgb: 42 42 49;
+    --accent: #4f46e5;
+    --accent-rgb: 79 70 229;
+    --accent-hover: #4338ca;
+    --accent-tint: #22204a;
+    --accent-tint-rgb: 34 32 74;
+    --accent-tint-text: #a5b4fc;
+    --sla-on-track: #a1a1aa;
+    --sla-late: #fca5a5;
+    --status-progress: #93c5fd;
+    --status-done: #86efac;
+    --shadow-float: 0 8px 24px rgb(0 0 0 / 0.5);
+    --pill-todo-bg: #27272a;
+    --pill-todo-text: #a1a1aa;
+    --pill-progress-bg: #172554;
+    --pill-progress-text: #93c5fd;
+    --pill-done-bg: #052e16;
+    --pill-done-text: #86efac;
+    --pill-risk-bg: #3a2a08;
+    --pill-risk-text: #fcd34d;
+    --pill-breached-bg: #dc2626;
+    --pill-breached-text: #ffffff;
+    --pill-met-bg: #0f2e2b;
+    --pill-met-text: #5eead4;
+  }
+
+  * {
+    border-color: var(--border);
+  }
+
+  html {
+    color-scheme: light;
+  }
+
+  html.dark {
+    color-scheme: dark;
+  }
+
+  body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection {
+    background: var(--accent-tint);
+    color: var(--accent-tint-text);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  .pill {
+    @apply inline-flex h-6 items-center gap-1 whitespace-nowrap rounded-sm px-2 text-xs font-medium leading-none;
+  }
+
+  .pill-todo {
+    background: var(--pill-todo-bg);
+    color: var(--pill-todo-text);
+  }
+
+  .pill-in-progress {
+    background: var(--pill-progress-bg);
+    color: var(--pill-progress-text);
+  }
+
+  .pill-done {
+    background: var(--pill-done-bg);
+    color: var(--pill-done-text);
+  }
+
+  .pill-at-risk {
+    background: var(--pill-risk-bg);
+    color: var(--pill-risk-text);
+  }
+
+  .pill-breached {
+    background: var(--pill-breached-bg);
+    color: var(--pill-breached-text);
+  }
+
+  .pill-met {
+    background: var(--pill-met-bg);
+    color: var(--pill-met-text);
+  }
+
+  .sla-ontrack {
+    color: var(--sla-on-track);
+  }
+
+  .sla-late {
+    color: var(--sla-late);
+  }
+
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+
+  .card-lift {
+    transition:
+      border-color 120ms ease,
+      background-color 120ms ease;
+  }
+
+  .task-drop-settle {
+    animation: task-drop-settle 160ms ease-out;
+  }
+
+  @keyframes task-drop-settle {
+    from {
+      transform: translateY(4px);
+      opacity: 0.6;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

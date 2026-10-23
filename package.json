@@ -1,0 +1,32 @@
+{
+  "name": "taskflow",
+  "private": true,
+  "packageManager": "pnpm@10.13.1",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev": "pnpm --parallel --filter @taskflow/api --filter @taskflow/web dev",
+    "build": "pnpm --filter @taskflow/web build",
+    "typecheck": "pnpm -r typecheck",
+    "lint": "eslint .",
+    "db:up": "docker compose up -d mongo",
+    "db:down": "docker compose down",
+    "seed": "pnpm --filter @taskflow/api seed"
+  },
+  "devDependencies": {
+    "@eslint/js": "9.31.0",
+    "@next/eslint-plugin-next": "15.5.9",
+    "eslint": "9.31.0",
+    "eslint-plugin-react-hooks": "5.2.0",
+    "globals": "16.3.0",
+    "typescript": "5.8.3",
+    "typescript-eslint": "8.36.0"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "argon2",
+      "esbuild"
+    ]
+  }
+}
