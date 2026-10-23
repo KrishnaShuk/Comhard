@@ -22,7 +22,7 @@ export function setSessionCookie(res: Response, token: string): void {
   res.cookie(config.sessionCookie, token, {
     httpOnly: true,
     sameSite: "lax",
-    secure: config.isProduction,
+    secure: config.cookieSecure,
     path: "/",
     maxAge: config.sessionMaxAgeMs,
   });
@@ -32,7 +32,7 @@ export function clearSessionCookie(res: Response): void {
   res.clearCookie(config.sessionCookie, {
     httpOnly: true,
     sameSite: "lax",
-    secure: config.isProduction,
+    secure: config.cookieSecure,
     path: "/",
   });
 }

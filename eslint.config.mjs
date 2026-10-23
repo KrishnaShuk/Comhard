@@ -34,6 +34,9 @@ export default tseslint.config(
       "@next/next": nextPlugin,
       "react-hooks": reactHooks,
     },
+    settings: {
+      next: { rootDir: "apps/web" },
+    },
     rules: {
       ...reactHooks.configs.recommended.rules,
       ...nextPlugin.configs.recommended.rules,

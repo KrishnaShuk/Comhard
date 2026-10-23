@@ -7,7 +7,7 @@
   },
   "scripts": {
     "dev": "pnpm --parallel --filter @taskflow/api --filter @taskflow/web dev",
-    "build": "pnpm --filter @taskflow/web build",
+    "build": "pnpm --filter @taskflow/api build && pnpm --filter @taskflow/web build",
     "typecheck": "pnpm -r typecheck",
     "lint": "eslint .",
     "db:up": "docker compose up -d mongo",
